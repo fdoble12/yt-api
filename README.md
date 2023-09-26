@@ -1,0 +1,12 @@
+# yt-api
+# Install Modules/Packages
+- Run pip3 install -r requirements.txt
+
+# Create an API key then add to .env file
+- Generate a Youtube API key here: https://console.cloud.google.com/apis/dashboard
+- Create a .env file in the project path
+  - create an API_KEY variable in the file then assign the generated api key as value
+  - Ex. API_KEY=1234asjdjsal
+
+# Youtube API Class
+- Create a main function and instantiate a youtubeAPI() class
