@@ -2,7 +2,7 @@
 # Install Modules/Packages
 - Run pip3 install -r requirements.txt
 
-# Create an API key then add to .env file
+# Create an API key and .env file
 - Generate a Youtube API key here: https://console.cloud.google.com/apis/dashboard
 - Create a .env file in the project path
   - create an API_KEY variable then assign the generated api key as its value
