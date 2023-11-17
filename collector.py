@@ -7,10 +7,10 @@ api =yt_api.youtubeAPI(keyNum)
 # Define the search query, max results, and start date
 search_query = "Foreigner try filipino food"  # Your search query
 max_results = 50  # Maximum results per query
-start_date = datetime(2018, 1, 1)  # Start date
+start_date = datetime(2018, 8, 1)  # Start date
 
 # Define the end date
-end_date = datetime(2018, 1, 30)
+end_date = datetime(2018, 8, 30)
 
 # Create a time delta
 delta = timedelta(days=10)
@@ -48,6 +48,6 @@ while start_date <= end_date:
 
 # Continue with any further processing as needed
 # ...
-all_responses.to_csv("Foreigner Reacts to Filipinos 2015.csv",index=False)
-all_comments.to_csv("Comments_Foreigner Reacts to Filipinos.csv",index=False)
+all_responses.to_csv("videos_reacts_01-2018.csv",index=False)
+all_comments.to_csv("comments_reacts_01-2018.csv",index=False)
 print(f"Data collection for {search_query} from {start_date} to {end_date} completed")
