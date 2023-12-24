@@ -5,7 +5,7 @@ keyNum = 3
 api =yt_api.youtubeAPI(keyNum)
 
 for i in range(1,8):
-    df = pd.read_csv(f'output_{i}.csv')
+    df = pd.read_csv(f'output_{i}.csv') #CSV file of filtered videos
     videos = df['videoId'].to_list()
     comments = api.get_comments_from_videos(videos)
     pd.DataFrame(comments).to_csv(f'comments_output_{i}.csv',index=False)
