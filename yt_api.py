@@ -51,7 +51,7 @@ class youtubeAPI():
     # Returns the video details and statistics of a single video ID
     def get_vid_details(self,video_id):
         details = self.youtube.videos().list(
-            part='snippet,statistics',
+            part='snippet,statistics,contentDetails',
             id=video_id
         ).execute()
         return details
@@ -173,11 +173,14 @@ class youtubeAPI():
             for item in items:
                 video_data = item['snippet']
                 statistics = item['statistics']
+                contentDetails = item['contentDetails']
                 title= video_data['title']
                 videoId= item['id']
                 channelTitle= video_data['channelTitle']
                 channelId= video_data['channelId']
                 publishedAt= video_data['publishedAt']
+                description = video_data['description']
+                duration = contentDetails['duration']
                 try:
                     viewCount= int(statistics['viewCount'])
                 except:
@@ -196,17 +199,39 @@ class youtubeAPI():
                     commentCount= int(statistics['commentCount'])
                 except:
                     commentCount = -1
+                try:
+                    tags = video_data['tags']
+                except:
+                    tags=[]
+                try:
+                    channel_info = self.youtube.channels().list(
+                        part='snippet',
+                        id=channelId
+                    ).execute()
+                    country = channel_info['items'][0]['snippet']['country']
+                except Exception as e:
+                    print(f'Error in getting country: {e}')
+                    country = 'None'
+                try:
+                    categoryId = video_data['categoryId']
+                except:
+                    categoryId = 'None'
+                
                 data = {
                     'title': title,
                     'videoId': videoId,
+                    'description': description,
                     'channelTitle': channelTitle,
                     'channelId': channelId,
+                    'channelCountry':country,
                     'publishedAt': publishedAt,
                     'viewCount': viewCount,
                     'likeCount': likeCount,
                     'favoriteCount': favoriteCount,
                     'commentCount': commentCount,
-                    #'tags': video_data['tags']
+                    'tags': tags,
+                    'categoryId': categoryId,
+                    'duration':duration,
                 }
                 data_list.append(data)
         df = pd.DataFrame(data_list)
