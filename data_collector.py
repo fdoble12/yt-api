@@ -12,5 +12,4 @@ class Cl():
         response = self.api.get_vid_details_from_search(search_query, max_results, published_after, published_before)
         temp = self.api.video_stats_to_dataframe(response)
         return temp
-    
 
