@@ -10,3 +10,4 @@
 
 # Youtube API Class
 - Create a main function and instantiate a youtubeAPI() class
+- Consists of functions that can collect data from YouTube including videos, statistics, channels, metadata, and comments
